@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>薇閣中學 | 藥學夢想家個人網頁</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ffafbd;
+            --secondary-yellow: #ffedbc;
+            --text-color: #5a5a5a;
+            --bg-color: #fff9fb;
+            --accent-green: #a8e6cf;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* 背景小裝飾 */
+        .bubble {
+            position: fixed;
+            background: rgba(255, 175, 189, 0.2);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); }
+            100% { transform: translateY(-10vh) scale(1); }
+        }
+
+        /* Header 區域 */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-yellow));
+            text-align: center;
+            color: white;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        header h1 { font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 5px rgba(0,0,0,0.1); }
+        header p { font-size: 1.2rem; background: rgba(255,255,255,0.2); padding: 5px 20px; border-radius: 20px; }
+
+        /* 內容區塊 */
+        .container {
+            max-width: 900px;
+            margin: -50px auto 50px;
+            padding: 20px;
+        }
+
+        section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover { transform: translateY(-5px); }
+
+        h2 {
+            color: #ff8fa3;
+            border-bottom: 3px dashed #ffcad4;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fefefe;
+            border-left: 5px solid var(--primary-pink);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        /* 標籤樣式 */
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            margin: 5px 2px;
+            background: var(--secondary-yellow);
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .skill-bar {
+            background: #eee;
+            border-radius: 10px;
+            height: 15px;
+            margin: 10px 0;
+        }
+
+        .skill-progress {
+            background: var(--primary-pink);
+            height: 100%;
+            border-radius: 10px;
+            width: 0%; /* JS 控制 */
+            transition: width 1.5s ease-in-out;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="bubble-container"></div>
+
+    <header>
+        <h1>Hello! 我是 楊婧慈</h1>
+        <p>薇閣中學 | 自然科學班 | 目標：台北醫學大學藥學系 ✨</p>
+    </header>
+
+    <div class="container">
+        
+        <section id="about">
+            <h2>🌸 關於我</h2>
+            <p>我是一名熱愛科學與邏輯的高三學生。在薇閣自然科學班的洗禮下，我習慣透過實驗探究事物的本質。除了實驗室的顯微鏡，我也熱愛在辯論場上與對手交鋒，或用 C++ 寫出邏輯嚴密的程式。而藥學系的廣闊發展空間深深吸引著我，不管是到醫院或藥局成為藥師，或是到藥廠研發新的藥品，都會是我熱愛的未來職業。我期待將藥學的專業結合資訊能力，為未來的醫療貢獻一份心力。</p>
+        </section>
+
+        <section id="science">
+            <h2>🧪 學習內容與實驗作品</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>化學與生物實驗</h3>
+                    <p>參與過許多實驗課程，像是研究不同醣類對酵母菌產氧效率的影響、維他命C滴定、萃取等等。培養了精確操作與數據紀錄的嚴謹態度和對科學研究的濃厚興趣。</p>
+                </div>
+                <div class="card">
+                    <h3>物理探究</h3>
+                    <p>針對物理光學進行研究，練習從觀測現象中了解物理邏輯，將知識具象化。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="competitions">
+            <h2>🏆 競賽亮點</h2>
+            <ul>
+                <li><strong>AMC10：</strong> 取得 90 分亮眼成績，展現優異數學邏輯。</li>
+                <li><strong>TRML 數學競賽：</strong> 參與團體賽，培養團隊協作與限時解題壓力抗性。</li>
+            </ul>
+        </section>
+
+        <section id="activities">
+            <h2>🎈 社團與課外活動</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>辯論社</h3>
+                    <span class="tag">邏輯</span> <span class="tag">表達</span>
+                    <p>參與多次社內練習賽。辯論讓我學會從不同立場看問題，這對於溝通藥事服務至關重要。</p>
+                </div>
+                <div class="card">
+                    <h3>造型氣球社</h3>
+                    <span class="tag">創意</span> <span class="tag">手作</span>
+                    <p>練習專注力與空間構成，這是我放鬆身心並訓練手指靈巧度的好方法。</p>
+                </div>
+                <div class="grid">
+                  <div class="card">
+                    <h3>營隊經歷</h3>
+                    <span class="tag">積極</span> <span class="tag">學習</span>
+                    <p>曾參與: 北醫薇閣資優醫學研習營、北醫暑期高中現代醫學營(G梯)和陽明交通大學腫瘤、免疫與基因體探索科學營，探索課外知識。</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="coding">
+            <h2>💻 自主學習</h2>
+            <p>在繁重的課業之餘，我自學了 C++ 程式設計，掌握迴圈、函式與基礎資料結構。除此之外，也自學了關於中醫的知識，與他人一起在高中成果發表會上一同發表。</p>
+                    </section>
+
+    </div>
+
+    <footer>
+        Made with ❤️ for Pharmacy School Application
+    </footer>
+
+    <script>
+        // 製作背景泡泡效果
+        const bubbleContainer = document.getElementById('bubble-container');
+        for(let i=0; i<15; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            const size = Math.random() * 60 + 20 + 'px';
+            bubble.style.width = size;
+            bubble.style.height = size;
+            bubble.style.left = Math.random() * 100 + 'vw';
+            bubble.style.animationDelay = Math.random() * 10 + 's';
+            bubbleContainer.appendChild(bubble);
+        }
+
+        // 當滾動到技能區塊時，顯示進度條
+        window.addEventListener('scroll', () => {
+            const codingSection = document.getElementById('coding');
+            const progress = document.getElementById('cpp-progress');
+            const sectionPos = codingSection.getBoundingClientRect().top;
+            const screenPos = window.innerHeight;
+
+            if(sectionPos < screenPos) {
+                progress.style.width = '75%'; // 假設掌握度為 75%
+            }
+        });
+    </script>
+</body>
+</html>
